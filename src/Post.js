@@ -51,7 +51,7 @@ function Posts({ itemName, coins, participants, imageSrc, imageAlt }) {
                 <span className="coins">
                     <Box pt={0}>
                         <h3 className="light">
-                            <strong>Coins:</strong> {coins}
+                            <strong>Coins to enter Raffle:</strong> {coins}
                         </h3>
                     </Box>
                 </span>
@@ -70,7 +70,6 @@ function Posts({ itemName, coins, participants, imageSrc, imageAlt }) {
                             <Button className="enterButton" variant="contained" size="medium" color="primary" disableElevation>
                                 Enter Raffle
                             </Button>
-                            
                         </Box>
                     </span>
                 </MuiThemeProvider>
