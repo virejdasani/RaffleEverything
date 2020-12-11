@@ -1,0 +1,36 @@
+.post {
+    margin-left: 15%;
+    width: 70%;
+    border-bottom: 2px solid #DDDDDD;
+    text-align: center;
+    margin-bottom: 10px;
+    overflow: hidden; /* This is to get everything contained within the post borders */
+}
+
+.itemName {
+    text-align: center;
+    padding-top: 15px;
+    color: midnightblue;
+}
+
+.postImage {
+    height: 218;
+    width: 160;
+    object-fit: contain;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    /* float: left; */ /* This is to get items on the right side of the image instead of below */
+}
+
+
+.imageText {
+    padding-top: 10px;
+    padding-bottom: 20px;
+} 
+
+.light {
+    font-weight: normal;
+}
+
+
