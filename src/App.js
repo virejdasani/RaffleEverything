@@ -68,10 +68,15 @@ const theme = createMuiTheme({
     },
 });
 
-  // For modal
+  // For modals
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
+
+  // For sign up modal
   const [open, setOpen] = useState(false);
+
+  // For sign in modal
+  const [openSignIn, setOpenSignIn] = useState(false);
 
   // For posts
   const [posts, setPosts] = useState([]);
@@ -111,7 +116,7 @@ const theme = createMuiTheme({
     })
   }, []);
 
-  // Sign up event
+  // Sign up handler
   const signUp = (event) => {
     event.preventDefault();
 
@@ -122,6 +127,21 @@ const theme = createMuiTheme({
       })
     })
     .catch((error) => alert(error.message));
+
+    // Close modal after sign up
+    setOpen(false);
+  }
+
+  // Sign in handler
+  const signIn = (event) => {
+    event.preventDefault();
+    
+    auth.signInWithEmailAndPassword(email, password)
+    .catch((error) => alert(error.message));
+
+    // Close the modal after sign in
+    setOpenSignIn(false);
+
   }
 
   return (
@@ -148,20 +168,62 @@ const theme = createMuiTheme({
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} />
-                  {/* CONFIRM PASSWORD */}
+                  {/* USERNAME */}
                   <Input
                     placeholder="Username"
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)} />
                   
-                  <Button type="submit" onClick={signUp}>Sign Up</Button>
+                  <Box pt={2}>
+                    <Button variant="contained" size="medium" color="primary" type="submit" onClick={signUp}>Sign Up</Button>
+                  </Box>
+                  
+                  <Box pt={2}>
+                    <Button variant="text" color="secondary" size="small" onClick={() => {setOpenSignIn(true)}} >Sign in?</Button>
+                  </Box>
                 </div>
             </center>
           </form>
         </div>
       </Modal>
       {/* sign-up modal (pop-up) */}
+
+      {/* SIGN-IN MODAL (POP-UP) */}
+      <Modal 
+      open={openSignIn}
+      onClose={() => setOpenSignIn(false)}>
+        <div style={modalStyle} className={classes.paper}>
+          <form className="signInForm">
+            <center>
+              <h3>Welcome back</h3>
+              <div className="signInInputFields">
+                {/* EMAIL */}
+                <Input
+                  placeholder="email"
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)} />
+                  {/* PASSWORD */}
+                  <Input
+                    placeholder="Password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
+                  <Box pt={2}>
+                    <Button variant="contained" size="medium" color="primary" type="submit" onClick={signIn}>Sign In</Button>
+                  </Box>
+                  
+                  <Box pt={2}>
+                    <Button variant="text" color="secondary" size="small" onClick={() => {setOpen(true)}} >Sign up?</Button>
+                  </Box>
+
+                </div>
+            </center>
+          </form>
+        </div>
+      </Modal>
+      {/* sign-in modal (pop-up) */}
 
       {/*---------- HEADER ----------*/}
       <div className="appHeader">
@@ -173,7 +235,7 @@ const theme = createMuiTheme({
             <div className="aboutButton">
               <MuiThemeProvider theme={theme}>
                 <span className="enterRaffleButton">
-                  <Box pt={2}> {/* This will add 3px padding-top */}
+                  <Box pt={2}> {/* This will add 2px padding-top */}
                     <Button onClick={() => {setOpen(true)}} className="enterButton" variant="contained" size="small" disableElevation>
                       ABOUT
                     </Button>
@@ -189,19 +251,30 @@ const theme = createMuiTheme({
 
         {/* AUTHENTICATION */}
         <div className="authOptions">
-          <div className="signUpButton">
             {/* If signed in, button will show Logout, onClick => logout */}
             {user ? (
-              <Button variant="outlined" color="secondary" size="medium" disableElevation onClick={() => auth.signOut()}> 
-                Logout
-              </Button>
+              <div className="signUpButton">
+                <Button variant="outlined" color="secondary" size="medium" disableElevation onClick={() => auth.signOut()}> 
+                  Logout
+                </Button>
+              </div>  
+             
             ): (
-              // Else, it will show Logout
-              <Button variant="outlined" color="secondary" size="medium" disableElevation onClick={() => {setOpen(true)}}> 
-                Sign Up
-              </Button>
+              // Else, it will show Sign up and login
+              <div className="signInButtons">
+                <center>
+                    <Button variant="outlined" color="secondary" size="medium" disableElevation onClick={() => {setOpen(true)}}> 
+                      Sign Up
+                    </Button>
+
+                    <Button variant="outlined" color="secondary" size="medium" disableElevation onClick={() => {setOpenSignIn(true)}}> 
+                      Sign In
+                    </Button>
+                </center>
+              </div>
+              
             )}
-          </div>
+          
         </div>
         {/* authentication */}
 
@@ -211,7 +284,7 @@ const theme = createMuiTheme({
                 <h5>Welcome { username }</h5>
               ): ( 
                 // Else is not logged in, it will show not signed in
-                <h5>Not signed in</h5>
+                <h5>Not logged in</h5>
               )}
         </div>       
       </div>

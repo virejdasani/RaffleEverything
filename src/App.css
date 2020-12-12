@@ -28,11 +28,15 @@
   flex-direction: column;
 }
 
-.signUpButton {
-  padding-bottom: 10px;
-  padding-top: 5px;
+.signInInputFields {
+  display: flex;
+  flex-direction: column;
 }
 
 .welcomeUser {
+  padding-bottom: 10px;
+}
+
+.signInButtons {
   padding-bottom: 10px;
 }

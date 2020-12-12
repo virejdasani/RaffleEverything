@@ -51,7 +51,7 @@ function Posts({ itemName, coins, participants, imageSrc, imageAlt }) {
                 <span className="coins">
                     <Box pt={0}>
                         <h3 className="light">
-                            <strong>Coins to enter Raffle:</strong> {coins}
+                            <strong>Coins for one Raffle entry:</strong> {coins}
                         </h3>
                     </Box>
                 </span>
