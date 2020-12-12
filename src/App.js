@@ -7,7 +7,6 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { db, auth } from './firebase';
-import About from './About';
 import { Input } from '@material-ui/core';
 
 // Styling for modal
@@ -54,8 +53,6 @@ const theme = createMuiTheme({
   // For the fonts
   typography: {
       fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
         '"Segoe UI"',
         'Roboto',
         '"Helvetica Neue"',
