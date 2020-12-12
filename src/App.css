@@ -9,8 +9,7 @@
 
 .title {
   color: darkslategrey;
-  padding-bottom: 15px;
-  margin-top: 0px;
+  padding-bottom: 10px;
 }
 
 .appHeader {
@@ -21,12 +20,19 @@
 }
 
 .aboutButton {
-  display: flex;
   padding-left: 10px;
-  padding-bottom: 15px;
 }
 
 .signUpInputFields {
   display: flex;
   flex-direction: column;
+}
+
+.signUpButton {
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+
+.welcomeUser {
+  padding-bottom: 10px;
 }

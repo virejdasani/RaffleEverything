@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import { db } from './firebase';
+import { db, auth } from './firebase';
 import About from './About';
 import { Input } from '@material-ui/core';
 
@@ -72,13 +72,34 @@ const theme = createMuiTheme({
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
+
   // For posts
   const [posts, setPosts] = useState([]);
+
   // For authentication
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirm, setConfirm] = useState(''); 
+  const [username, setUsername] = useState(''); 
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // User has logged in
+        console.log(authUser);
+        setUser(authUser);
+
+      } else {
+        // User logged out
+        setUser(null);
+      }
+    })
+
+    return () => {
+      // Detach the listener so no duplicates are present
+      unsubscribe();
+    }
+  }, [user, username]);
 
   useEffect(() => {
     db.collection('posts').onSnapshot(snapshot => {
@@ -90,8 +111,17 @@ const theme = createMuiTheme({
     })
   }, []);
 
+  // Sign up event
   const signUp = (event) => {
+    event.preventDefault();
 
+    auth.createUserWithEmailAndPassword(email, password)
+    .then((authUser) => {
+      return authUser.user.updateProfile({
+        displayName: username
+      })
+    })
+    .catch((error) => alert(error.message));
   }
 
   return (
@@ -120,12 +150,12 @@ const theme = createMuiTheme({
                     onChange={(e) => setPassword(e.target.value)} />
                   {/* CONFIRM PASSWORD */}
                   <Input
-                    placeholder="Confirm Password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)} />
-
-                  <Button onClick={signUp}>Sign Up</Button>
+                    placeholder="Username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)} />
+                  
+                  <Button type="submit" onClick={signUp}>Sign Up</Button>
                 </div>
             </center>
           </form>
@@ -160,13 +190,30 @@ const theme = createMuiTheme({
         {/* AUTHENTICATION */}
         <div className="authOptions">
           <div className="signUpButton">
-            <Button variant="outlined" color="secondary" size="medium" disableElevation onClick={() => {setOpen(true)}}> 
-              Sign Up
-            </Button>
+            {/* If signed in, button will show Logout, onClick => logout */}
+            {user ? (
+              <Button variant="outlined" color="secondary" size="medium" disableElevation onClick={() => auth.signOut()}> 
+                Logout
+              </Button>
+            ): (
+              // Else, it will show Logout
+              <Button variant="outlined" color="secondary" size="medium" disableElevation onClick={() => {setOpen(true)}}> 
+                Sign Up
+              </Button>
+            )}
           </div>
         </div>
         {/* authentication */}
 
+        <div className="welcomeUser">       
+          {/* This is to show welcome, name */}
+          {user ? (
+                <h5>Welcome { username }</h5>
+              ): ( 
+                // Else is not logged in, it will show not signed in
+                <h5>Not signed in</h5>
+              )}
+        </div>       
       </div>
       {/*---------- header ----------*/}
 
