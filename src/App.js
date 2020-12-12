@@ -156,18 +156,21 @@ const theme = createMuiTheme({
             <center>
               <h3>Register</h3>
               <div className="signUpInputFields">
+
                 {/* EMAIL */}
                 <Input
                   placeholder="email"
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)} />
+
                   {/* PASSWORD */}
                   <Input
                     placeholder="Password"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} />
+
                   {/* USERNAME */}
                   <Input
                     placeholder="Username"
