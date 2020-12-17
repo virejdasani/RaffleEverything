@@ -290,7 +290,7 @@ const theme = createMuiTheme({
       </div>
       {/*---------- header ----------*/}
 
-      {/* Mapping throught the posts above and output this data: */}
+      {/* Mapping through the posts above and outputting this data: */}
       {
         posts.map(({id, post}) =>(
           <Posts key={id} itemName={post.itemName} coins={post.coins} imageAlt={post.imageAlt} imageSrc={post.imageSrc} participants={post.participants} maxParticipants={post.maxParticipants}/>
