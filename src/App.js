@@ -281,7 +281,7 @@ const theme = createMuiTheme({
         <div className="welcomeUser">       
           {/* This is to show welcome, name */}
           {user ? (
-                <h5>Welcome { username }</h5>
+                <h5 className="welcomeUser">Welcome { user.displayName }</h5>
               ): ( 
                 // Else is not logged in, it will show not signed in
                 <h5>Not logged in</h5>
@@ -293,7 +293,7 @@ const theme = createMuiTheme({
       {/* Mapping throught the posts above and output this data: */}
       {
         posts.map(({id, post}) =>(
-          <Posts key={id} itemName={post.itemName} coins={post.coins} imageAlt={post.imageAlt} imageSrc={post.imageSrc}/>
+          <Posts key={id} itemName={post.itemName} coins={post.coins} imageAlt={post.imageAlt} imageSrc={post.imageSrc} participants={post.participants} maxParticipants={post.maxParticipants}/>
         ))
       }
       

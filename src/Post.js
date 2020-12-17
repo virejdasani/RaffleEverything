@@ -37,13 +37,13 @@ const theme = createMuiTheme({
       },
   });
 
-function Posts({ itemName, coins, participants, imageSrc, imageAlt }) {
+function Posts({ itemName, coins, participants, maxParticipants, imageSrc, imageAlt }) {
     return (
         <div className="post">
             {/* Name of item */}
             <h1 className="itemName">{itemName}</h1>
 
-            {/* Picture of winning gift on left */}
+            {/* Picture of item on left */}
             <img className="postImage" src={imageSrc} alt={imageAlt}/>
          
             <div className="imageText">
@@ -59,7 +59,16 @@ function Posts({ itemName, coins, participants, imageSrc, imageAlt }) {
                 <span className="participants">
                     <Box pt={2}>
                         <h3 className="light">
-                            <strong>Participants:</strong> {participants} (from firebase)
+                            <strong>Participants:</strong> {participants}
+                        </h3>
+                    </Box>
+                </span>
+
+            {/* MAX Num of participants */}
+                <span className="maxParticipants">
+                    <Box pt={2}>
+                        <h3 className="light">
+                            <strong>Max Participants:</strong> {maxParticipants}
                         </h3>
                     </Box>
                 </span>
