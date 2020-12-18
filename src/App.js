@@ -75,6 +75,9 @@ const theme = createMuiTheme({
   // For sign in modal
   const [openSignIn, setOpenSignIn] = useState(false);
 
+  // For about modal
+  const [openAbout, setOpenAbout] = useState(false);
+
   // For posts
   const [posts, setPosts] = useState([]);
 
@@ -225,6 +228,18 @@ const theme = createMuiTheme({
       </Modal>
       {/* sign-in modal (pop-up) */}
 
+
+      {/* ABOUT MODAL */}
+      <Modal 
+      open={openAbout}
+      onClose={() => setOpenAbout(false)}>
+        <div style={modalStyle} className={classes.paper}>
+          <h1>ABOUT</h1>
+          {/* TODO */}
+        </div>
+      </Modal>
+      {/* about modal */}
+
       {/*---------- HEADER ----------*/}
       <div className="appHeader">
         {/* TODO  Site Logo, left aligned with style: object-fit: contain; so it doesn't stretch*/}
@@ -236,7 +251,7 @@ const theme = createMuiTheme({
               <MuiThemeProvider theme={theme}>
                 <span className="enterRaffleButton">
                   <Box pt={2}> {/* This will add 2px padding-top */}
-                    <Button onClick={() => {setOpen(true)}} className="enterButton" variant="contained" size="small" disableElevation>
+                    <Button onClick={() => {setOpenAbout(true)}} className="enterButton" variant="contained" size="small" disableElevation>
                       ABOUT
                     </Button>
                   </Box>
