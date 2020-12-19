@@ -40,3 +40,12 @@
 .signInButtons {
   padding-bottom: 10px;
 }
+
+.aboutModalTitle {
+  padding-bottom: 15px;
+}
+
+.aboutModalContent {
+  padding-bottom: 10px;
+  font-weight: normal;
+}

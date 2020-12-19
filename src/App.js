@@ -234,8 +234,24 @@ const theme = createMuiTheme({
       open={openAbout}
       onClose={() => setOpenAbout(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <h1>ABOUT</h1>
-          {/* TODO */}
+          <h3 className="aboutModalTitle">
+            About Raffle Everything
+          </h3>
+          <h4 className="aboutModalContent">
+            • Each item on the website can be won by transferring the said amount via paytm
+          </h4>
+          <h4 className="aboutModalContent">  
+            • You can also buy additional raffle tickets to increase your chance of winning
+          </h4>
+          <h4 className="aboutModalContent">
+            • Once the payment has been recieved, you will automatically be entered in the contest.
+          </h4>
+          <h4 className="aboutModalContent">
+            • Win or lose, you are doing a good deed because all profits go towards efforts for stopping covid-19 at the end of each month.
+          </h4>
+          <h4 className="aboutModalContent">
+            • If you win, you will receive a mail or message for your shipping info so we can deliver the product to you for FREE!
+          </h4>
         </div>
       </Modal>
       {/* about modal */}
