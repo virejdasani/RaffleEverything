@@ -314,7 +314,7 @@ const theme = createMuiTheme({
           {user ? (
                 <h5 className="welcomeUser">Welcome { user.displayName }</h5>
               ): ( 
-                // Else is not logged in, it will show not signed in
+                // Else is not logged in, it will show not logged in
                 <h5>Not logged in</h5>
               )}
         </div>       
