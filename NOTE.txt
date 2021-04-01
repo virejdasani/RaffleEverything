@@ -1,1 +1,0 @@
-Firebase is no longer working in this app and can be refreshed by adding this as a new project in firebase.
