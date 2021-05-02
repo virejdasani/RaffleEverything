@@ -1,18 +1,18 @@
 # Raffle Everything
-
+                
 > https://raffle-everything.netlify.app/
-
-> Entire Webpage
+                
+> Entire Webpage                
 ![](https://github.com/virejdasani/RaffleEverything/blob/master/assets/RaffleEverything-WebsitePreview.png)
-
-> About Button
+                
+> About Button                
 ![](https://github.com/virejdasani/RaffleEverything/blob/master/assets/AboutPreview.png)
-
-> Sign Up Button
+                
+> Sign Up Button                
 ![](https://github.com/virejdasani/RaffleEverything/blob/master/assets/SignUp.png)
-
-> Sign In Button
+                
+> Sign In Button                
 ![](https://github.com/virejdasani/RaffleEverything/blob/master/assets/SignIn.png)
-
-> Signed In
+                
+> Signed In                
 > ![](https://github.com/virejdasani/RaffleEverything/blob/master/assets/SignedIn.png)
