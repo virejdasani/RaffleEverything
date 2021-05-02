@@ -18,5 +18,5 @@
 > ![](https://github.com/virejdasani/RaffleEverything/blob/master/assets/SignedIn.png)
 
 
-### Notes
-- This project is abandoned due to the laws for this kind of thing in India
+### Note
+- This project is abandoned due to the complicated laws for this kind of thing in India
